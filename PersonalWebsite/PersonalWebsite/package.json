@@ -1,0 +1,12 @@
+{
+  "name": "personal-website",
+  "version": "0.0.0",
+  "description": "PersonalWebsite",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.14"
+  }
+}
