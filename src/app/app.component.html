@@ -1,35 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="background-image: url('../assets/background.png')">
+<div >
 <div class="topnav">
-  <a class="active" href="#home">Home</a>
-  <a href="#news">Projects</a>
-  <a href="#contact">Resume</a>
-  <a href="#about">About</a>
+  <a routerLink="/home">Home</a>
+  <a routerLink="/projects">Projects</a>
+  <a routerLink="/resume">Resume</a>
+  <a routerLink="/about">About</a>
   <span class="title">Welcome to my website!</span>
 </div>
-  <br/>
-  <br/>
-  <br/>
-  <div style="max-width: 60%; min-width: 375px; margin: auto; display: block; background-color: white; overflow:auto;">
-      <img style="float: left; max-width: 40%;" src="../assets/headshot.jpg" />
-      <div style="height: 100%; color: rgb(9, 100, 96); margin-left: 50%;">
-        <br/>
-        <h1 style="margin-bottom: 0%; margin-top: 0%;">Preston Percival</h1>
-        <h3 style="margin-bottom: 0%; margin-top: 0%;">Software Engineer</h3>
-        <h4 style="margin-bottom: 0%;">Email:</h4>
-        <h5 style="margin-top: 0%;">********@gmail.com</h5>
-        <h4 style="margin-bottom: 0%;">Phone number:</h4>
-        <h5 style="margin-top: 0%;">***-***-****</h5>
-        <h4 style="margin-bottom: 0%;">Location:</h4>
-        <h5 style="margin-top: 0%;">Dallas-Fort Worth, Texas</h5>
-      </div>
-  </div>
-</div>
-<div style="max-width: 60%; height: 50px; background: rgb(9, 100, 96); margin: auto; text-align:center;">
-  <a href="https://www.linkedin.com/in/preston-percival-89a557103">
-    <img style="height: 45px; width: 45px; border: 0;" src="../assets/linkedin.png" />
-  </a>
-</div>
+<router-outlet></router-outlet>
+<!--<app-messages></app-messages>-->
+
 <!--
 <div style="float:left">
   <h1>Preston Percival</h1>
