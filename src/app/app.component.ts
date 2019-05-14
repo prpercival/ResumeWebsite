@@ -7,5 +7,5 @@ import * as angular from "angular";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-new-angular-app';
+  title = 'my-personal-website';
 }

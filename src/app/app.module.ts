@@ -1,6 +1,6 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 
 //import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -13,6 +13,9 @@ import { HomeComponent }   from './home/home.component';
 import { ProjectsComponent }  from './projects/projects.component';
 import { ResumeComponent }   from './resume/resume.component';
 import { AboutComponent }  from './about/about.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component'; 
 
 @NgModule({
   imports: [
@@ -20,6 +23,7 @@ import { AboutComponent }  from './about/about.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -33,7 +37,10 @@ import { AboutComponent }  from './about/about.component';
     HomeComponent,
     ProjectsComponent,
     ResumeComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent,
+    DashboardComponent,
+    RegisterComponent
   ],
   bootstrap: [ AppComponent ]
 })
