@@ -13,6 +13,9 @@ import { HomeComponent }   from './home/home.component';
 import { ProjectsComponent }  from './projects/projects.component';
 import { ResumeComponent }   from './resume/resume.component';
 import { AboutComponent }  from './about/about.component';
+import { LoginComponent } from './login/login.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { MaterialModule } from './angular-material.module';
 
 @NgModule({
   imports: [
@@ -20,6 +23,7 @@ import { AboutComponent }  from './about/about.component';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MaterialModule
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -33,7 +37,9 @@ import { AboutComponent }  from './about/about.component';
     HomeComponent,
     ProjectsComponent,
     ResumeComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent,
+    NavigationComponent
   ],
   bootstrap: [ AppComponent ]
 })

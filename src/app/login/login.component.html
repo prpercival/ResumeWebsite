@@ -1,0 +1,69 @@
+<!--<form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+  <div class="container-fluid">
+      <h2 class="form-signin-heading">Login</h2>
+      <div *ngIf="invalidLogin" class="alert alert-danger">Invalid username or password.</div>
+      <br/>
+      <label for="username" class="sr-only">Email address</label>
+      <input type="email" id="username" name="username" ngModel class="form-control" placeholder="User Name" required autofocus>
+      <br/>
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" name="password" ngModel class="form-control" placeholder="Password" required>
+      <br/>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <a routerLink="/navigation">navigation</a>
+  </div>
+</form>
+-->
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Preston Percival</span>
+        <span style="margin-left:auto"></span>
+        <button mat-button>About</button>
+        <button mat-button>Contact</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voicemail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div style="height: 25%"></div>
+<mat-card class="example-card" style="margin: auto; width: 20%; text-align: center">
+  <mat-card-header style="display: inline-block;">
+      <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content >
+    <form class="example-form" style="display: inline-block;">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+        <td><mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
+        </mat-form-field></td>
+      </tr></table>
+    </form>
+    <!--<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>-->
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="login()" color="primary">Login</button>
+  </mat-card-actions>
+</mat-card>
