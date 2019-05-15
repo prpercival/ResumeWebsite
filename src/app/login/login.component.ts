@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
     username: string;
     password: string;
       ngOnInit() {
+        Promise.resolve
       }
       login() : void {
         if(this.username == 'admin' && this.password == 'admin'){

@@ -20,7 +20,5 @@
   <mat-tab label="About">
     <app-about *ngIf="tabGroup.selectedIndex === 3"></app-about>
   </mat-tab>
-  <mat-tab label="Logout">
-    <app-login *ngIf="tabGroup.selectedIndex === 4"></app-login>
-  </mat-tab>
 </mat-tab-group>
+<a routerLink="/login" class="button">Logout</a>

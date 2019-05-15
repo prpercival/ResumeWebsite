@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { MaterialModule } from '../angular-material.module'
 
 @Component({
@@ -9,9 +9,16 @@ import { MaterialModule } from '../angular-material.module'
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  message: string = 'loading :(';
+
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
+  }
+
+  ngAfterViewInit() {
+    this.message = 'all done loading :)'
+    this.cdr.detectChanges();
   }
 
 }
