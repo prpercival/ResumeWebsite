@@ -1,5 +1,9 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectorRef, NgModule } from '@angular/core';
 import { MaterialModule } from '../angular-material.module'
+import { AppRoutingModule } from '../app-routing.module'
+
+@NgModule({
+})
 
 @Component({
   selector: 'app-navigation',

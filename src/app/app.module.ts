@@ -16,6 +16,13 @@ import { AboutComponent }  from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MaterialModule } from './angular-material.module';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
+
+export function getToken(): string {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   imports: [
@@ -23,7 +30,13 @@ import { MaterialModule } from './angular-material.module';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    JwtModule.forRoot({
+      config: {
+          tokenGetter: getToken
+      }
+    })
+    
 
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -32,6 +45,7 @@ import { MaterialModule } from './angular-material.module';
     //  InMemoryDataService, { dataEncapsulation: false }
     //)
   ],
+  providers: [ AuthGuardService, AuthService ],
   declarations: [
     AppComponent,
     HomeComponent,
