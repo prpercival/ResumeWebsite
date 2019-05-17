@@ -2,17 +2,20 @@
 import { Injectable, Component } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
-import { LoginModel } from '../models/user.model'
+import { LoginModel } from '../models/user.model';
+import { environment } from '../../environments/environment'
 //import * as jwt_decode from "jwt-decode";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
 import * as moment from "moment";
 
+const APIEndpoint = environment.APIEndpoint;
 
 @Injectable()
 export class AuthService {
     constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
-  // ...
+    // ...
+  
     public isAuthenticated(): boolean {
         const token = localStorage.getItem('id_token');
         // Check whether the token is expired and return
@@ -21,7 +24,7 @@ export class AuthService {
     }
 
     login(user: LoginModel) {
-        return this.http.post<string>('https://prestonpercivalbackend.azurewebsites.net/api/auth/login', user)
+        return this.http.post<string>(APIEndpoint + '/api/auth/login', user)
         .do(res => this.setSession(res)) 
         .shareReplay();
     }

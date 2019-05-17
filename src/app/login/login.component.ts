@@ -33,7 +33,7 @@ export class LoginComponent {
 
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {MatDialog} from '@angular/material'
+import {MatDialog, MatSnackBar} from '@angular/material'
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service'
 import { LoginModel } from '../models/user.model'
@@ -42,11 +42,11 @@ import { LoginModel } from '../models/user.model'
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [ AuthService ]
+  providers: [ AuthService, MatSnackBar ]
 })
 
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
     username: string;
     password: string;
     public isUserAuthenticated: boolean = false; 
@@ -70,6 +70,9 @@ export class LoginComponent implements OnInit {
                 .subscribe(
                     () => {
                         console.log("User is logged in");
+                        this.snackBar.open('Login Successful!', '', {
+                          duration: 3000
+                        });
                         this.router.navigate(["navigation/home"]);
                     }
                 );

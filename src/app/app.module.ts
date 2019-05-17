@@ -19,9 +19,11 @@ import { MaterialModule } from './angular-material.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
+import { MatSnackBarModule, MatSnackBar, MatDialog, MatDialogModule } from '@angular/material';
+//import { DialogModal, DialogModalDialog } from './dialog-modal/dialog-modal';
 
 export function getToken(): string {
-  return localStorage.getItem('token');
+  return localStorage.getItem('id_token');
 }
 
 @NgModule({
@@ -31,6 +33,8 @@ export function getToken(): string {
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
+    MatSnackBarModule,
+    MatDialogModule,
     JwtModule.forRoot({
       config: {
           tokenGetter: getToken,
@@ -54,7 +58,9 @@ export function getToken(): string {
     ResumeComponent,
     AboutComponent,
     LoginComponent,
-    NavigationComponent
+    NavigationComponent,
+    //DialogModal,
+    //DialogModalDialog
   ],
   bootstrap: [ AppComponent ]
 })

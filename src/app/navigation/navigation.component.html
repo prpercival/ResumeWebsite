@@ -28,8 +28,9 @@
     <a routerLink="/navigation/resume" class="buttonLogout">Resume</a>
     <a routerLink="/navigation/about" class="buttonLogout">About</a>
     <span style="flex: auto;"></span>
-    <a routerLink="" class="buttonLogout">Logout</a>
+    <button (click)="logout()" class="buttonLogout">Logout</button>
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
+<p style="position: fixed; bottom: 0; width:100%; text-align: center;">Copyright © 2019 Preston Percival. All rights reserved.</p>
 
