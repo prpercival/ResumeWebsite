@@ -21,7 +21,7 @@ export class AuthService {
     }
 
     login(user: LoginModel) {
-        return this.http.post<string>('http://localhost:5000/api/auth/login', user)
+        return this.http.post<string>('http://prestonpercivalbackend.azurewebsites.net/api/auth/login', user)
         .do(res => this.setSession(res)) 
         .shareReplay();
     }
