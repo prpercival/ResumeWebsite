@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         Promise.resolve
       }
 
-      login() : void {
+      test() : void {
         if(this.username == 'admin' && this.password == 'admin'){
         this.router.navigate(["navigation/home"]);
         }else {
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         }
       }
 
-      test() {
+      login() {
         const val: LoginModel = ({ UserName: this.username, Password: this.password});
 
         if (this.username && this.password) {
@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
                 .subscribe(
                     () => {
                         console.log("User is logged in");
-                        this.router.navigateByUrl('/navigation/home');
+                        this.router.navigate(["navigation/home"]);
                     }
                 );
         }

@@ -3,32 +3,34 @@ import { Injectable, Component } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { LoginModel } from '../models/user.model'
+//import * as jwt_decode from "jwt-decode";
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
-
 import * as moment from "moment";
+
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
+    constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
   // ...
-  public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    // Check whether the token is expired and return
-    // true or false
-    return !this.jwtHelper.isTokenExpired(token);
-  }
+    public isAuthenticated(): boolean {
+        const token = localStorage.getItem('id_token');
+        // Check whether the token is expired and return
+        // true or false
+        return !this.jwtHelper.isTokenExpired(token);
+    }
 
-   login(user: LoginModel) {
+    login(user: LoginModel) {
         return this.http.post<string>('http://localhost:5000/api/auth/login', user)
-        .do(res => this.setSession) 
+        .do(res => this.setSession(res)) 
         .shareReplay();
     }
         
     private setSession(authResult) {
-        const expiresAt = moment().add(authResult.expiresIn,'second');
+        const result = this.jwtHelper.decodeToken(authResult.token);
+        const expiresAt = moment.unix(result.exp);
 
-        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('id_token', authResult.token);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
     }          
 

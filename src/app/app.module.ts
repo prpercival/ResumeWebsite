@@ -33,7 +33,8 @@ export function getToken(): string {
     MaterialModule,
     JwtModule.forRoot({
       config: {
-          tokenGetter: getToken
+          tokenGetter: getToken,
+          whitelistedDomains: ['localhost:4200']
       }
     })
     
