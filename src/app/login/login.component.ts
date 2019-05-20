@@ -87,4 +87,16 @@ export class LoginComponent implements OnInit {
         //return !this.jwtHelper.isTokenExpired(token);
         return this.isUserAuthenticated;
       }
+
+      contactMessage(): void {
+        const dialogRef = this.dialog.open(ModalComponent, {
+          width: '500px',
+          data: {title: "Contact Information", message: "If you have any questions or would like to request access to my page, please email me at the address below. \n presperc@gmail.com"}
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+          //this.title = result;
+        });
+      }
 }

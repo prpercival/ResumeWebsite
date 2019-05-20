@@ -11,19 +11,6 @@ import { ModalComponent } from './dialog-modal/dialog-modal';
 export class AppComponent {
   title = 'my-new-angular-app';
 
-  animal: string;
-  name: string;
+  constructor() {}
 
-  constructor(public dialog: MatDialog) {}
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ModalComponent, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.animal = result;
-    });
-  }
 }
