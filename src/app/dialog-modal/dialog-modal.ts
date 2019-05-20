@@ -1,52 +1,23 @@
-import {Component, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
-export interface DialogData {
-    title: string;
-    message: string;
-}
-
-/**
- * @title Dialog Overview
- */
-/*@Component({
-  selector: 'dialog-modal',
-  templateUrl: 'dialog-modal.html',
-  //styleUrls: ['dialog-overview-example.css'],
-})
-export class DialogModal {
-
-    title: string;
-    message: string;
-
-    constructor(public dialog: MatDialog) {}
-
-    openDialog(title: string, message: string): void {
-        const dialogRef = this.dialog.open(DialogModalDialog, {
-        width: '250px',
-        data: {title: this.title, message: this.message}
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-        //console.log('The dialog was closed');
-        //this.animal = result;
-        });
-    }
-
-}
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { DialogData } from '../models/dialog.model';
 
 @Component({
-  selector: 'dialog-modal',
-  templateUrl: 'dialog-modal.html',
+  selector: 'app-modal',
+  templateUrl: './dialog-modal.html',
+  //styleUrls: ['./dialog-modal.css']
 })
-export class DialogModalDialog {
+export class ModalComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogModalDialog>,
+    public dialogRef: MatDialogRef<ModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-}*/
+  ngOnInit() {
+  }
+
+}

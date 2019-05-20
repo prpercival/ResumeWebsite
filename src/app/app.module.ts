@@ -20,6 +20,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { MatSnackBarModule, MatSnackBar, MatDialog, MatDialogModule } from '@angular/material';
+import { ModalComponent } from './dialog-modal/dialog-modal';
 //import { DialogModal, DialogModalDialog } from './dialog-modal/dialog-modal';
 
 export function getToken(): string {
@@ -59,9 +60,11 @@ export function getToken(): string {
     AboutComponent,
     LoginComponent,
     NavigationComponent,
+    ModalComponent
     //DialogModal,
     //DialogModalDialog
   ],
+  entryComponents: [ ModalComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

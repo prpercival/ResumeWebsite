@@ -37,16 +37,17 @@ import {MatDialog, MatSnackBar} from '@angular/material'
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service'
 import { LoginModel } from '../models/user.model'
+import { ModalComponent } from '../dialog-modal/dialog-modal';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [ AuthService, MatSnackBar ]
+  providers: [ AuthService, MatSnackBar, ModalComponent ]
 })
 
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
+  constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
     username: string;
     password: string;
     public isUserAuthenticated: boolean = false; 
@@ -64,7 +65,7 @@ export class LoginComponent implements OnInit {
 
       login() {
         const val: LoginModel = ({ UserName: this.username, Password: this.password});
-
+        
         if (this.username && this.password) {
             this.authService.login(val)
                 .subscribe(
@@ -76,7 +77,7 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(["navigation/home"]);
                     }
                 );
-        }
+        }    
       }
 
       public isAuthenticated(): boolean {
