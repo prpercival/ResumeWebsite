@@ -22,7 +22,7 @@ export class AuthService {
     constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
     // ... 
   
-    public isAuthenticated(): boolean {
+    public async isAuthenticated() {
         const token: TokenModel = ({Token:localStorage.getItem('id_token')});   
 
         //var isValid: boolean = false;
@@ -39,9 +39,33 @@ export class AuthService {
         //let test1 = test.subscribe(res => {return res} );
         // Check whether the token is expired and return
         // true or false
-        return !this.jwtHelper.isTokenExpired(token.Token);// && this.isValid;
+        return await fetch(APIEndpoint + '/api/auth/authentication', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*'
+            },
+            body: JSON.stringify(token)
+        }).then(r => r.json()) && !this.jwtHelper.isTokenExpired(token.Token);
+        //return response.isValid;
+        //return !this.jwtHelper.isTokenExpired(token.Token);// && this.isValid;
         //let test3 = test2;
         //return !this.jwtHelper.isTokenExpired(token.Token) && isValid;// && (this.http.post<boolean>(APIEndpoint + '/api/auth/authentication', token)).pipe(map(res => res.json()));
+    }
+
+    async checkToken(token){
+        let response = await fetch(APIEndpoint + '/api/auth/authentication', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin':'*'
+            },
+            body: JSON.stringify(token)
+        });
+        let data = await response.json();
+        return data;
     }
 
     async isTokenValid(token: TokenModel) {
