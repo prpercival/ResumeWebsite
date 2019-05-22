@@ -39,7 +39,7 @@ export class AuthService {
         //let test1 = test.subscribe(res => {return res} );
         // Check whether the token is expired and return
         // true or false
-        return await fetch(APIEndpoint + '/api/auth/authentication', {
+        return fetch(APIEndpoint + '/api/auth/authentication', {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -47,7 +47,7 @@ export class AuthService {
                 'Access-Control-Allow-Origin':'*'
             },
             body: JSON.stringify(token)
-        }).then(r => r.json()) && !this.jwtHelper.isTokenExpired(token.Token);
+        }).then(r => r.json());// && !this.jwtHelper.isTokenExpired(token.Token);
         //return response.isValid;
         //return !this.jwtHelper.isTokenExpired(token.Token);// && this.isValid;
         //let test3 = test2;
