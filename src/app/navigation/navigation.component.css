@@ -1,11 +1,11 @@
-/* Add a black background color to the top navigation */
-.topnav {
+  /* Add a black background color to the top navigation */
+  .topnav {
     background-color: #333;
     overflow: hidden;
   }
   
   /* Style the links inside the navigation bar */
-  .topnav a, span {
+  .topnav a {
     float: left;
     color: #f2f2f2;
     padding: 14px 16px;
@@ -31,13 +31,13 @@
     font-size: 30px;
     }
     
-    .buttonLogout {
-        background-color: #3f51b5; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-      }
+  .buttonLogout {
+      background-color: #3f51b5; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }

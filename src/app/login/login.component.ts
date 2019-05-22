@@ -77,7 +77,11 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(["navigation/home"]);
                     }
                 );
-        }    
+        }
+        
+        this.snackBar.open('Logging in...', '', {
+          duration: 3000
+        });
       }
 
       public isAuthenticated(): boolean {
