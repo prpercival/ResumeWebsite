@@ -1,36 +1,3 @@
-/*import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Router } from "@angular/router";
-import { NgForm } from '@angular/forms';
-
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
-export class LoginComponent {
-  invalidLogin: boolean;
-
-  constructor(private router: Router, private http: HttpClient) { }
-
-  login(form: NgForm) {
-    let credentials = JSON.stringify(form.value);
-    this.http.post("http://localhost:5000/api/auth/login", credentials, {
-      headers: new HttpHeaders({
-        "Content-Type": "application/json"
-      })
-    }).subscribe(response => {
-      let token = (<any>response).token;
-      localStorage.setItem("jwt", token);
-      this.invalidLogin = false;
-      this.router.navigate(["/"]);
-    }, err => {
-      this.invalidLogin = true;
-    });
-  }
-
-}*/
-
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material'
@@ -84,23 +51,15 @@ export class LoginComponent implements OnInit {
         });
       }
 
+      register() {
+        this.router.navigate(["register"]);
+      }
+
       public isAuthenticated(): boolean {
         const token = localStorage.getItem('token');
         // Check whether the token is expired and return
         // true or false
         //return !this.jwtHelper.isTokenExpired(token);
         return this.isUserAuthenticated;
-      }
-
-      contactMessage(): void {
-        const dialogRef = this.dialog.open(ModalComponent, {
-          width: '500px',
-          data: {title: "Contact Information", message: "If you have any questions or would like to request access to my page, please email me at the address below. \n presperc@gmail.com"}
-        });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
-          //this.title = result;
-        });
       }
 }

@@ -1,8 +1,8 @@
 // src/app/auth/auth.service.ts
 import { Injectable, Component } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { HttpClient } from '@angular/common/http';
-import { LoginModel } from '../models/user.model';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { LoginModel, RegisterModel } from '../models/user.model';
 import { TokenModel } from '../models/token.model';
 import { environment } from '../../environments/environment'
 //import * as jwt_decode from "jwt-decode";
@@ -25,20 +25,6 @@ export class AuthService {
     public async isAuthenticated() {
         const token: TokenModel = ({Token:localStorage.getItem('id_token')});   
 
-        //var isValid: boolean = false;
-
-        /*this.http.post<boolean>(APIEndpoint + '/api/auth/authentication', token)
-        .do(res => {
-            isValid = res
-            return isValid
-        })
-        .shareReplay();*/
-        //this.isValid(token).subscribe(res => isValid = res);
-        //this.isTokenValid(token);
-
-        //let test1 = test.subscribe(res => {return res} );
-        // Check whether the token is expired and return
-        // true or false
         return fetch(APIEndpoint + '/api/auth/authentication', {
             method: 'POST',
             mode: 'cors',
@@ -47,37 +33,12 @@ export class AuthService {
                 'Access-Control-Allow-Origin':'*'
             },
             body: JSON.stringify(token)
-        }).then(r => r.json());// && !this.jwtHelper.isTokenExpired(token.Token);
-        //return response.isValid;
-        //return !this.jwtHelper.isTokenExpired(token.Token);// && this.isValid;
-        //let test3 = test2;
-        //return !this.jwtHelper.isTokenExpired(token.Token) && isValid;// && (this.http.post<boolean>(APIEndpoint + '/api/auth/authentication', token)).pipe(map(res => res.json()));
+        }).then(r => r.json());
     }
 
-    async checkToken(token){
-        let response = await fetch(APIEndpoint + '/api/auth/authentication', {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin':'*'
-            },
-            body: JSON.stringify(token)
-        });
-        let data = await response.json();
-        return data;
-    }
-
-    async isTokenValid(token: TokenModel) {
-        let promise = new Promise((resolve, reject) => {
-            this.http.post<boolean>(APIEndpoint + '/api/auth/authentication', token)
-            .toPromise()
-            .then(res => { 
-                this.isValid = res;
-                resolve();
-             }) 
-        });
-        return promise;
+    registerUser(user: RegisterModel) {
+        return this.http.post(APIEndpoint + '/api/customers/register', user)
+        .shareReplay();
     }
 
     login(user: LoginModel) {

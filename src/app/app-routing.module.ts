@@ -8,10 +8,12 @@ import { AboutComponent }      from './about/about.component';
 import { LoginComponent }      from './login/login.component';
 import { NavigationComponent }      from './navigation/navigation.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
+import { RegisterComponent } from './register/register.component';
+import { LoginNavigationComponent } from './login-navigation/login-navigation.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '', component: LoginComponent },
+  //{ path: '', component: LoginNavigationComponent },
   { 
     path: 'navigation',
     component: NavigationComponent,
@@ -23,6 +25,14 @@ const routes: Routes = [
       { path: 'resume', component: ResumeComponent },
       { path: 'about', component: AboutComponent },
     ]
+   },
+   {
+     path: '',
+     component: LoginNavigationComponent,
+     children:[
+       { path: '', component: LoginComponent },
+       { path: 'register', component: RegisterComponent }
+     ]
    },
    { path: '**', redirectTo: '' }
 ];

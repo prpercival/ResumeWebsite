@@ -33,7 +33,7 @@ export class NavigationComponent implements OnInit {
     });
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/login-navigation"]);
   }
 
 }

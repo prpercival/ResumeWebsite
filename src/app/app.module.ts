@@ -21,6 +21,8 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { AuthService } from './auth/auth.service';
 import { MatSnackBarModule, MatSnackBar, MatDialog, MatDialogModule } from '@angular/material';
 import { ModalComponent } from './dialog-modal/dialog-modal';
+import { RegisterComponent } from './register/register.component';
+import { LoginNavigationComponent } from './login-navigation/login-navigation.component';
 //import { DialogModal, DialogModalDialog } from './dialog-modal/dialog-modal';
 
 export function getToken(): string {
@@ -60,7 +62,9 @@ export function getToken(): string {
     AboutComponent,
     LoginComponent,
     NavigationComponent,
-    ModalComponent
+    ModalComponent,
+    RegisterComponent,
+    LoginNavigationComponent
     //DialogModal,
     //DialogModalDialog
   ],
