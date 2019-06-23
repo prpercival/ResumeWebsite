@@ -1,16 +1,20 @@
 // src/app/auth/auth.service.ts
 import { Injectable, Component } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { LoginModel, RegisterModel } from '../models/user.model';
 import { TokenModel } from '../models/token.model';
 import { environment } from '../../environments/environment'
 //import * as jwt_decode from "jwt-decode";
 import { map, switchMap } from "rxjs/operators";
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/shareReplay';
 import * as moment from "moment";
 import { Observable } from 'rxjs';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { ModalComponent } from '../dialog-modal/dialog-modal';
+import { promise } from 'protractor';
 
 const APIEndpoint = environment.APIEndpoint;
 
@@ -19,7 +23,7 @@ export class AuthService {
 
     public isValid: boolean = false;
 
-    constructor(private http: HttpClient, public jwtHelper: JwtHelperService) {}
+    constructor(private http: HttpClient, public jwtHelper: JwtHelperService, private dialog: MatDialog, private snackBar: MatSnackBar) {}
     // ... 
   
     public async isAuthenticated() {
@@ -38,6 +42,13 @@ export class AuthService {
 
     registerUser(user: RegisterModel) {
         return this.http.post(APIEndpoint + '/api/customers/register', user)
+        .catch((err: HttpErrorResponse) => {
+            const dialogRef = this.dialog.open(ModalComponent, {
+                width: '250px',
+                data: {title: "Error!", message: err.error}
+              });
+            return err.error;
+        })
         .shareReplay();
     }
 

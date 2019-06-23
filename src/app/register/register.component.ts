@@ -55,17 +55,16 @@ export class RegisterComponent implements OnInit {
     }
     else
     {
-      this.authService.registerUser(val).subscribe(
+      this.snackBar.open('Registering...', '');
+
+      var subscription = this.authService.registerUser(val).subscribe(
         () => {
             console.log("User has registered.");
+            this.snackBar.dismiss();
             this.snackBar.open('Register Successful!', '', {
               duration: 3000
         });
-      });
-
-      this.snackBar.open('Registering...', '', {
-        duration: 3000
-      });
+      });   
     }
   }
 

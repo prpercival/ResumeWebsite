@@ -34,10 +34,12 @@ export class LoginComponent implements OnInit {
         const val: LoginModel = ({ UserName: this.username, Password: this.password});
         
         if (this.username && this.password) {
+          this.snackBar.open('Logging in...', '');
             this.authService.login(val)
                 .subscribe(
                     () => {
                         console.log("User is logged in");
+                        this.snackBar.dismiss();
                         this.snackBar.open('Login Successful!', '', {
                           duration: 3000
                         });
@@ -45,10 +47,6 @@ export class LoginComponent implements OnInit {
                     }
                 );
         }
-        
-        this.snackBar.open('Logging in...', '', {
-          duration: 3000
-        });
       }
 
       register() {
