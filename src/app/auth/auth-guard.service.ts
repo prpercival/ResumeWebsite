@@ -4,7 +4,7 @@ import { Router, CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
 //import { DialogModalDialog, DialogModal } from '../dialog-modal/dialog-modal'
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../dialog-modal/dialog-modal';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenModel } from '../models/token.model';
