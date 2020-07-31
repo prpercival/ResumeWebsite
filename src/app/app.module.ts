@@ -2,7 +2,6 @@ import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 //import { InMemoryDataService }  from './in-memory-data.service';
@@ -24,7 +23,6 @@ import { MatSnackBarModule, MatSnackBar, MatDialog, MatDialogModule } from '@ang
 import { ModalComponent } from './dialog-modal/dialog-modal';
 import { RegisterComponent } from './register/register.component';
 import { LoginNavigationComponent } from './login-navigation/login-navigation.component';
-import { ComponentsModule } from './components/components.module';
 //import { DialogModal, DialogModalDialog } from './dialog-modal/dialog-modal';
 
 export function getToken(): string {
@@ -40,7 +38,6 @@ export function getToken(): string {
     MaterialModule,
     MatSnackBarModule,
     MatDialogModule,
-    ComponentsModule,
     JwtModule.forRoot({
       config: {
           tokenGetter: getToken,
