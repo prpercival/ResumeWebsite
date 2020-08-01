@@ -24,6 +24,15 @@ import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { ModalComponent } from './dialog-modal/dialog-modal';
 import { RegisterComponent } from './register/register.component';
 import { LoginNavigationComponent } from './login-navigation/login-navigation.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { AdminComponent } from './admin/admin.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 //import { DialogModal, DialogModalDialog } from './dialog-modal/dialog-modal';
 
 export function getToken(): string {
@@ -32,7 +41,15 @@ export function getToken(): string {
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
+    FlexLayoutModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule,
     BrowserModule,
+    MatCheckboxModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -65,7 +82,8 @@ export function getToken(): string {
     NavigationComponent,
     ModalComponent,
     RegisterComponent,
-    LoginNavigationComponent
+    LoginNavigationComponent,
+    AdminComponent
     //DialogModal,
     //DialogModalDialog
   ],

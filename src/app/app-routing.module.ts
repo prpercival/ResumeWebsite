@@ -10,6 +10,7 @@ import { NavigationComponent }      from './navigation/navigation.component';
 import { AuthGuardService as AuthGuard } from './auth/auth-guard.service';
 import { RegisterComponent } from './register/register.component';
 import { LoginNavigationComponent } from './login-navigation/login-navigation.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   //{ path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'projects', component: ProjectsComponent },
       { path: 'resume', component: ResumeComponent },
       { path: 'about', component: AboutComponent },
+      { path: 'admin', component: AdminComponent }
     ]
    },
    {
