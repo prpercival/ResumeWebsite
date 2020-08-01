@@ -12,7 +12,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/shareReplay';
 import * as moment from "moment";
 import { Observable } from 'rxjs';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalComponent } from '../dialog-modal/dialog-modal';
 import { promise } from 'protractor';
 
