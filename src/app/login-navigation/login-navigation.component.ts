@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ModalComponent } from '../dialog-modal/dialog-modal';
 
 @Component({
@@ -9,9 +10,13 @@ import { ModalComponent } from '../dialog-modal/dialog-modal';
 })
 export class LoginNavigationComponent implements OnInit {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
+  }
+
+  goHome() {
+    this.router.navigate([""]);
   }
 
   contactMessage(): void {

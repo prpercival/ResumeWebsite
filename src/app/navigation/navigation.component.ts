@@ -3,6 +3,8 @@ import { MaterialModule } from '../angular-material.module'
 import { AppRoutingModule } from '../app-routing.module'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
+import { AuthService } from '../auth/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-navigation',
@@ -12,9 +14,10 @@ import {Router} from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
+  public isUserAuthenticated: boolean = false;
   message: string = 'loading :(';
 
-  constructor(private cdr: ChangeDetectorRef, private snackBar: MatSnackBar, private router: Router) { }
+  constructor(private cdr: ChangeDetectorRef, private jwtHelper: JwtHelperService, private snackBar: MatSnackBar, private router: Router, public auth: AuthService) { }
 
   ngOnInit() {
   }
@@ -22,6 +25,10 @@ export class NavigationComponent implements OnInit {
   ngAfterViewInit() {
     this.message = 'all done loading :)'
     this.cdr.detectChanges();
+  }
+
+  login(){
+    this.router.navigate(["/login"]);
   }
 
   logout(){
@@ -33,4 +40,11 @@ export class NavigationComponent implements OnInit {
     this.router.navigate(["/login-navigation"]);
   }
 
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('id_token');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token);
+    //return this.isUserAuthenticated;
+  }
 }
