@@ -16,20 +16,26 @@ const routes: Routes = [
   //{ path: '', redirectTo: '/login', pathMatch: 'full' },
   //{ path: '', component: LoginNavigationComponent },
   { 
-    path: 'navigation',
+    path: '',
     component: NavigationComponent,
-    canActivate: [AuthGuard],
+    //canActivate: [AuthGuard],
     //canActivateChild: [AuthGuard],
     children: [
-      { path: 'home', component: HomeComponent },
+      { path: '', component: HomeComponent },
       { path: 'projects', component: ProjectsComponent },
       { path: 'resume', component: ResumeComponent },
       { path: 'about', component: AboutComponent },
-      { path: 'admin', component: AdminComponent }
+      //{ path: 'admin', component: AdminComponent }
     ]
    },
+   { 
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    //canActivateChild: [AuthGuard],
+   },
    {
-     path: '',
+     path: 'login',
      component: LoginNavigationComponent,
      children:[
        { path: '', component: LoginComponent },
